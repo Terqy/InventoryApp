@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">InventoryApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="add_item">Add item</string>
+    <string name="insert_dummy_data">Insert dummy data</string>
+    <string name="title_activity_editor">Editor</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="insert_item_fail">Failed adding item</string>
+    <string name="insert_item_success">Added item</string>
+    <string name="new_item">New item</string>
+    <string name="edit_item">Edit item</string>
+    <string name="editor_item_upate_failed">Failed updating item</string>
+    <string name="editor_item_update_success">Success updateing item</string>
+    <string name="deleted_item_after_order">Deleted item</string>
+</resources>

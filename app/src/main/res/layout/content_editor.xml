@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="61dp">
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="40dp"
+            android:text="Product Name"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/entered_product_name"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_margin="16dp"
+            android:layout_toRightOf="@id/product_name" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/product_name"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/product_name"
+            android:layout_marginTop="104dp"
+            android:text="Price"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/entered_price"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/product_name"
+            android:layout_margin="16dp"
+            android:layout_toRightOf="@id/price"
+            android:inputType="number"/>
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:text="Quantity"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/entered_quantity"
+            android:layout_width="95dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/entered_price"
+            android:layout_marginTop="-16dp"
+            android:layout_toRightOf="@id/quantity"
+            android:inputType="number"/>
+
+        <TextView
+            android:id="@+id/supplier_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="218dp"
+            android:text="Supplier Name"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/supplier_name_edit"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_alignBaseline="@+id/supplier_name"
+            android:layout_toRightOf="@id/supplier_name" />
+
+        <TextView
+            android:id="@+id/supplier_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/supplier_name"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="16dp"
+            android:text="Supplier Phone"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/supplier_phone_edit"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/supplier_name_edit"
+            android:layout_toRightOf="@id/supplier_phone"
+            android:inputType="number"/>
+    </RelativeLayout>

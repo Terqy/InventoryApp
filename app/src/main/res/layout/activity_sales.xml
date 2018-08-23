@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SalesActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_sales"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/product_name_sales_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="77dp"
+        android:layout_marginLeft="16dp"
+        android:textColor="@android:color/black"
+        android:text="Product name:" />
+
+    <TextView
+        android:id="@+id/product_name_sales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/product_name_sales_category"
+        android:layout_marginStart="125dp"
+        tools:text="Product"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/product_quantity_sales_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/product_name_sales_category"
+        android:layout_marginTop="106dp"
+        android:textColor="@android:color/black"
+        android:text="Quantity:">
+    </TextView>
+
+    <TextView
+        android:id="@+id/product_quantity_sales_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/product_name_sales"
+        android:layout_alignTop="@+id/product_quantity_sales_category"
+        android:textColor="@android:color/black"
+        tools:text="Quantity" />
+
+    <TextView
+        android:id="@+id/prduct_price_sales_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/product_name_sales_category"
+        android:layout_marginTop="137dp"
+        android:text="Price:"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/product_price_sales_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/product_name_sales"
+        android:layout_alignTop="@+id/prduct_price_sales_category"
+        android:textColor="@android:color/black"
+        tools:text="Price" />
+
+    <TextView
+        android:id="@+id/supplier_name_sales_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/product_name_sales_category"
+        android:layout_marginTop="164dp"
+        android:textColor="@android:color/black"
+        android:text="Supplier name:" />
+
+    <TextView
+        android:id="@+id/product_supplier_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/product_name_sales"
+        android:layout_alignTop="@+id/supplier_name_sales_category"
+        android:textColor="@android:color/black"
+        tools:text="Name" />
+
+    <TextView
+        android:id="@+id/supplier_phone_sales_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/product_name_sales_category"
+        android:layout_marginTop="194dp"
+        android:text="Supplier Phone:"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/product_supplier_phone_sales_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/product_name_sales"
+        android:layout_alignTop="@+id/supplier_phone_sales_category"
+        android:textColor="@android:color/black"
+        tools:text="Phone number" />
+
+    <Button
+        android:id="@+id/pluss_button_sales"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/product_name_sales_category"
+        android:layout_centerVertical="true"
+        android:text="+"/>
+
+    <TextView
+        android:id="@+id/final_sales_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/product_quantity_sales_category"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"
+        android:text="0" />
+
+    <Button
+        android:id="@+id/minus_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/product_name_sales_category"
+        android:text="-" />
+
+    <TextView
+        android:id="@+id/finalprice_sales_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/product_name_sales_category"
+        android:layout_marginBottom="222dp"
+        android:textColor="@android:color/black"
+        android:text="Final price: " />
+
+    <TextView
+        android:id="@+id/final_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/product_name_sales_category"
+        android:layout_alignTop="@+id/finalprice_sales_category"
+        android:text="0,-"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/order_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/product_name_sales_category"
+        android:layout_marginBottom="146dp"
+        android:text="Order" />
+
+</RelativeLayout>

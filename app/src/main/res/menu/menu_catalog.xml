@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android.inventoryapp.Catalog">
+
+    <item
+        android:id="@+id/insert_dummy_data"
+        android:orderInCategory="100"
+        android:title="@string/insert_dummy_data"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/delete_all_data"
+        android:orderInCategory="100"
+        android:title="Delete"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/go_to_sales"
+        android:orderInCategory="100"
+        android:title="Sales"
+        app:showAsAction="never"/>
+</menu>
