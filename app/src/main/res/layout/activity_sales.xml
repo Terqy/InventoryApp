@@ -172,4 +172,13 @@
         android:layout_marginBottom="146dp"
         android:text="Order" />
 
+    <Button
+        android:id="@+id/call_supplier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/order_item"
+        android:layout_marginEnd="16dp"
+        android:text="Call supplier" />
+
 </RelativeLayout>

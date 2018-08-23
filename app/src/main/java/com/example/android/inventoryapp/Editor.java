@@ -103,7 +103,6 @@ public class Editor extends AppCompatActivity implements LoaderManager.LoaderCal
         switch(item.getItemId()) {
             case R.id.action_save:
                 insertItem();
-                finish();
                 return true;
 
             case R.id.action_delete:
@@ -120,10 +119,27 @@ public class Editor extends AppCompatActivity implements LoaderManager.LoaderCal
         String supplierName = editSupplierName.getText().toString().trim();
         String supplierPhone = editSupplierPhone.getText().toString().trim();
 
+        if(productName.length() < 1) {
+            Toast.makeText(this, "Please add a name", Toast.LENGTH_SHORT).show();
+            return;
+        } else if(price.length() <= 0) {
+            Toast.makeText(this, "Please add a price", Toast.LENGTH_SHORT).show();
+            return;
+        } else if(quantity.length() <= 0) {
+            Toast.makeText(this, "Please add a quantity", Toast.LENGTH_SHORT).show();
+            return;
+        } else if(supplierName.length() <= 0) {
+            Toast.makeText(this, "Pleas add a supplier name", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (supplierPhone.length() < 8 || supplierPhone.length() > 8) {
+            Toast.makeText(this, "Please add a phone number", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if(mCurrentItemUri == null && TextUtils.isEmpty(productName) && TextUtils.isEmpty(price) &&
                 TextUtils.isEmpty(quantity) && TextUtils.isEmpty(supplierName) &&
                 TextUtils.isEmpty(supplierPhone)) {
-                return;
+            return;
         }
 
         ItemDbHelper dbHelper = new ItemDbHelper(this);
@@ -143,6 +159,7 @@ public class Editor extends AppCompatActivity implements LoaderManager.LoaderCal
                 Toast.makeText(this, getString(R.string.insert_item_fail), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, getString(R.string.insert_item_success), Toast.LENGTH_SHORT).show();
+                finish();
                 return;
             }
         } else {
@@ -151,6 +168,7 @@ public class Editor extends AppCompatActivity implements LoaderManager.LoaderCal
                 Toast.makeText(this, getString(R.string.editor_item_upate_failed), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, getString(R.string.editor_item_update_success), Toast.LENGTH_SHORT).show();
+                finish();
             }
             return;
         }

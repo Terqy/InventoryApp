@@ -1,11 +1,9 @@
 package com.example.android.inventoryapp;
 
-import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
@@ -13,7 +11,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -28,13 +25,19 @@ import android.widget.Toast;
 import com.example.android.inventoryapp.Data.ItemContract;
 import com.example.android.inventoryapp.Data.ItemDbHelper;
 
-import java.util.List;
-
 public class Catalog extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private ItemDbHelper mDbHelper;
     private ItemAdapter adapter;
     private static final String TAG = Catalog.class.getSimpleName();
     private static final int ITEM_LOADER = 0;
+
+    TextView priceView;
+
+    int productPrice;
+
+    String productNameString;
+    String productSupplierNameString;
+    String productSupplierPhoneString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class Catalog extends AppCompatActivity implements LoaderManager.LoaderCa
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mDbHelper = new ItemDbHelper(this);
+
+        priceView = findViewById(R.id.product_price_list_view);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +59,8 @@ public class Catalog extends AppCompatActivity implements LoaderManager.LoaderCa
         });
 
         ListView itemListView = (ListView) findViewById(R.id.empty_list);
+        View emptyView = findViewById(R.id.empty_view);
+        itemListView.setEmptyView(emptyView);
 
         adapter = new ItemAdapter(this, null);
         itemListView.setAdapter(adapter);
@@ -83,6 +90,19 @@ public class Catalog extends AppCompatActivity implements LoaderManager.LoaderCa
         values.put(ItemContract.ItemEntry.COLUMN_SUPPLIER_PHONE_NUMBER, "12345678");
 
         Uri newUri = getContentResolver().insert(ItemContract.ItemEntry.CONTENT_URI, values);
+    }
+
+    private void updateItem(int quantity) {
+
+        ItemDbHelper dbHelper = new ItemDbHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(ItemContract.ItemEntry.COLUMN_PRODUCT_NAME, productNameString);
+        values.put(ItemContract.ItemEntry.COLUMN_PRICE, productPrice);
+        values.put(ItemContract.ItemEntry.COLUMN_QUANTITY, quantity);
+        values.put(ItemContract.ItemEntry.COLUMN_SUPPLIER_NAME, productSupplierNameString);
+        values.put(ItemContract.ItemEntry.COLUMN_SUPPLIER_PHONE_NUMBER, productSupplierPhoneString);
+
     }
 
     @Override
@@ -128,8 +148,8 @@ public class Catalog extends AppCompatActivity implements LoaderManager.LoaderCa
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        adapter.swapCursor(data);
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        adapter.swapCursor(cursor);
     }
 
     @Override

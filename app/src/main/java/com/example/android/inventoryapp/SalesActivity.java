@@ -30,6 +30,7 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
     private int finalPrice;
     private int itemQuantity;
     private int orderQuantity;
+    private int phoneNumber;
 
     private Boolean mItemHasChanged = false;
 
@@ -52,6 +53,7 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
     Button plussButton;
     Button minusButton;
     Button orderButton;
+    Button callSupplier;
 
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
         @Override
@@ -68,7 +70,7 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_sales);
         setSupportActionBar(toolbar);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         mCurrentItemUri = intent.getData();
         if(mCurrentItemUri == null) {
             setTitle("Sell item");
@@ -134,6 +136,15 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
                 finalPrice = 0;
                 finalSalesQuantity.setText(String.valueOf(orderQuantity));
                 finalPriceTextView.setText(String.valueOf(finalPrice) + ",-");
+            }
+        });
+
+        callSupplier = findViewById(R.id.call_supplier);
+        callSupplier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: " + phoneNumber));
+                startActivity(i);
             }
         });
 
@@ -226,6 +237,7 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
 
             productPrice = cursor.getInt(productPriceIndex);
             itemQuantity = cursor.getInt(productQuantityIndex);
+            phoneNumber = cursor.getInt(productSupplierPhoneIndex);
 
             productNameString = cursor.getString(productNameIndex);
             productPriceString = cursor.getString(productPriceIndex);
@@ -238,8 +250,6 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
             productQuantity.setText(productQuantityString);
             productSupplierName.setText(productSupplierNameString);
             productSupplierPhone.setText(productSupplierPhoneString);
-
-            Log.e("Wow", "" + productPrice + " " + itemQuantity);
         }
     }
 
