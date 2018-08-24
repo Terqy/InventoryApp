@@ -31,8 +31,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/product_price_list_view_information"
-        android:layout_toEndOf="@+id/product_price_list_view_information"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="67dp"
         android:textColor="@android:color/black"
         tools:text="0" />
+
+    <TextView
+        android:id="@+id/product_quantity_list_view_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/product_name_list_view"
+        android:layout_below="@+id/product_price_list_view_information"
+        android:text="Quantity: "
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/product_quantity_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/product_price_list_view_information"
+        android:layout_marginStart="92dp"
+        tools:text="0"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
 
 </RelativeLayout>

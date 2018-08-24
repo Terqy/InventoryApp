@@ -92,19 +92,6 @@ public class Catalog extends AppCompatActivity implements LoaderManager.LoaderCa
         Uri newUri = getContentResolver().insert(ItemContract.ItemEntry.CONTENT_URI, values);
     }
 
-    private void updateItem(int quantity) {
-
-        ItemDbHelper dbHelper = new ItemDbHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(ItemContract.ItemEntry.COLUMN_PRODUCT_NAME, productNameString);
-        values.put(ItemContract.ItemEntry.COLUMN_PRICE, productPrice);
-        values.put(ItemContract.ItemEntry.COLUMN_QUANTITY, quantity);
-        values.put(ItemContract.ItemEntry.COLUMN_SUPPLIER_NAME, productSupplierNameString);
-        values.put(ItemContract.ItemEntry.COLUMN_SUPPLIER_PHONE_NUMBER, productSupplierPhoneString);
-
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_catalog, menu);
@@ -140,7 +127,8 @@ public class Catalog extends AppCompatActivity implements LoaderManager.LoaderCa
         String[] projection = {
                 ItemContract.ItemEntry._ID,
                 ItemContract.ItemEntry.COLUMN_PRODUCT_NAME,
-                ItemContract.ItemEntry.COLUMN_PRICE
+                ItemContract.ItemEntry.COLUMN_PRICE,
+                ItemContract.ItemEntry.COLUMN_QUANTITY
         };
 
         return new CursorLoader(this, ItemContract.ItemEntry.CONTENT_URI,

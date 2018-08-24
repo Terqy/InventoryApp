@@ -72,7 +72,8 @@ public class SalesList extends AppCompatActivity implements LoaderManager.Loader
         String[] projection = {
                 ItemContract.ItemEntry._ID,
                 ItemContract.ItemEntry.COLUMN_PRODUCT_NAME,
-                ItemContract.ItemEntry.COLUMN_PRICE
+                ItemContract.ItemEntry.COLUMN_PRICE,
+                ItemContract.ItemEntry.COLUMN_QUANTITY
         };
 
         return new CursorLoader(this, ItemContract.ItemEntry.CONTENT_URI,
