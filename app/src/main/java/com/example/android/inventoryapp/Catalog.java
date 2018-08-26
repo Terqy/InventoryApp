@@ -31,6 +31,7 @@ public class Catalog extends AppCompatActivity implements LoaderManager.LoaderCa
     private static final String TAG = Catalog.class.getSimpleName();
     private static final int ITEM_LOADER = 0;
 
+
     TextView priceView;
 
     @Override
@@ -103,7 +104,7 @@ public class Catalog extends AppCompatActivity implements LoaderManager.LoaderCa
                 deleteAllItems();
                 return true;
 
-            case R.id.go_to_sales:
+            case R.id.go_to_detailed_view_list:
                 Intent i = new Intent(Catalog.this, SalesList.class) ;
                 startActivity(i);
                 return true;

@@ -119,66 +119,10 @@
         tools:text="Phone number" />
 
     <Button
-        android:id="@+id/pluss_button_sales"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignStart="@+id/product_name_sales_category"
-        android:layout_centerVertical="true"
-        android:text="+"/>
-
-    <TextView
-        android:id="@+id/final_sales_quantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/product_quantity_sales_category"
-        android:textSize="25sp"
-        android:textColor="@android:color/black"
-        android:text="0" />
-
-    <Button
-        android:id="@+id/minus_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/product_name_sales_category"
-        android:text="-" />
-
-    <TextView
-        android:id="@+id/finalprice_sales_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/product_name_sales_category"
-        android:layout_marginBottom="222dp"
-        android:textColor="@android:color/black"
-        android:text="Final price: " />
-
-    <TextView
-        android:id="@+id/final_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/product_name_sales_category"
-        android:layout_alignTop="@+id/finalprice_sales_category"
-        android:text="0,-"
-        android:textColor="@android:color/black" />
-
-    <Button
-        android:id="@+id/order_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/product_name_sales_category"
-        android:layout_marginBottom="146dp"
-        android:text="Order" />
-
-    <Button
         android:id="@+id/call_supplier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/order_item"
-        android:layout_marginEnd="16dp"
+        android:layout_centerInParent="true"
         android:text="Call supplier" />
 
 </RelativeLayout>

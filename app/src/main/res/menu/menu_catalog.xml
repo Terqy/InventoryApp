@@ -16,8 +16,8 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/go_to_sales"
+        android:id="@+id/go_to_detailed_view_list"
         android:orderInCategory="100"
-        android:title="Sales"
+        android:title="Detailed view list"
         app:showAsAction="never"/>
 </menu>

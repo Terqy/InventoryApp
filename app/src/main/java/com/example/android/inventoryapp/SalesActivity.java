@@ -47,12 +47,7 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
     TextView productQuantity;
     TextView productSupplierName;
     TextView productSupplierPhone;
-    TextView finalSalesQuantity;
-    TextView finalPriceTextView;
 
-    Button plussButton;
-    Button minusButton;
-    Button orderButton;
     Button callSupplier;
 
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
@@ -85,59 +80,12 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
         productQuantity = findViewById(R.id.product_quantity_sales_information);
         productSupplierName = findViewById(R.id.product_supplier_name);
         productSupplierPhone = findViewById(R.id.product_supplier_phone_sales_information);
-        finalSalesQuantity = findViewById(R.id.final_sales_quantity);
-        finalPriceTextView = findViewById(R.id.final_price);
 
         productName.setOnTouchListener(mTouchListener);
         productPriceTextView.setOnTouchListener(mTouchListener);
         productQuantity.setOnTouchListener(mTouchListener);
         productSupplierName.setOnTouchListener(mTouchListener);
         productSupplierPhone.setOnTouchListener(mTouchListener);
-
-        plussButton = (Button) findViewById(R.id.pluss_button_sales);
-        minusButton = (Button) findViewById(R.id.minus_button);
-        orderButton = (Button) findViewById(R.id.order_item);
-
-        plussButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                orderQuantity += 1;
-                if(orderQuantity > itemQuantity) {
-                    orderQuantity = itemQuantity;
-                }
-                finalPrice = productPrice * orderQuantity;
-                finalSalesQuantity.setText(String.valueOf(orderQuantity));
-                finalPriceTextView.setText(String.valueOf(finalPrice) + ",-");
-            }
-        });
-
-        minusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                orderQuantity -= 1;
-                if(orderQuantity < 0) {
-                    orderQuantity = 0;
-                }
-                finalPrice = productPrice * orderQuantity;
-                finalSalesQuantity.setText(String.valueOf(orderQuantity));
-                finalPriceTextView.setText(String.valueOf(finalPrice) + ",-");
-            }
-        });
-
-        orderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                itemQuantity -= orderQuantity;
-                if(itemQuantity <= 0) {
-                    deleteItem();
-                }
-                updateItem(itemQuantity);
-                orderQuantity = 0;
-                finalPrice = 0;
-                finalSalesQuantity.setText(String.valueOf(orderQuantity));
-                finalPriceTextView.setText(String.valueOf(finalPrice) + ",-");
-            }
-        });
 
         callSupplier = findViewById(R.id.call_supplier);
         callSupplier.setOnClickListener(new View.OnClickListener() {
@@ -148,44 +96,6 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
             }
         });
 
-    }
-
-    private void updateItem(int quantity) {
-
-        ItemDbHelper dbHelper = new ItemDbHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(ItemContract.ItemEntry.COLUMN_PRODUCT_NAME, productNameString);
-        values.put(ItemContract.ItemEntry.COLUMN_PRICE, productPrice);
-        values.put(ItemContract.ItemEntry.COLUMN_QUANTITY, quantity);
-        values.put(ItemContract.ItemEntry.COLUMN_SUPPLIER_NAME, productSupplierNameString);
-        values.put(ItemContract.ItemEntry.COLUMN_SUPPLIER_PHONE_NUMBER, productSupplierPhoneString);
-
-        if(mCurrentItemUri == null) {
-            Uri newUri = getContentResolver().insert(ItemContract.ItemEntry.CONTENT_URI, values);
-            if(newUri == null) {
-                Toast.makeText(this, getString(R.string.insert_item_fail), Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, getString(R.string.insert_item_success), Toast.LENGTH_SHORT).show();
-                return;
-            }
-        } else {
-            int rowsAffected = getContentResolver().update(mCurrentItemUri, values, null, null);
-            if(rowsAffected == 0) {
-                Toast.makeText(this, getString(R.string.deleted_item_after_order), Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, getString(R.string.editor_item_update_success), Toast.LENGTH_SHORT).show();
-            }
-            finish();
-            return;
-        }
-
-        Uri newUri = getContentResolver().insert(ItemContract.ItemEntry.CONTENT_URI, values);
-        if(newUri == null) {
-            Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
@@ -260,16 +170,5 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
         productQuantity.setText("");
         productSupplierName.setText("");
         productSupplierPhone.setText("");
-    }
-
-    private void deleteItem() {
-        if(mCurrentItemUri != null) {
-            int rowsDeleted = getContentResolver().delete(mCurrentItemUri, null, null);
-            if(rowsDeleted == 0) {
-                Toast.makeText(this, getString(R.string.insert_item_fail), Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, getString(R.string.insert_item_success), Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 }

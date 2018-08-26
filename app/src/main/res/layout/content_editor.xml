@@ -103,4 +103,12 @@
             android:layout_below="@+id/supplier_name_edit"
             android:layout_toRightOf="@id/supplier_phone"
             android:inputType="number"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/supplier_phone_edit"
+        android:layout_centerHorizontal="true"
+        android:text="Remember that phone number has to be 8 digits long"
+        android:textColor="@android:color/black" />
     </RelativeLayout>

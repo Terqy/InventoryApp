@@ -132,7 +132,7 @@ public class Editor extends AppCompatActivity implements LoaderManager.LoaderCal
             Toast.makeText(this, "Pleas add a supplier name", Toast.LENGTH_SHORT).show();
             return;
         } else if (supplierPhone.length() < 8 || supplierPhone.length() > 8) {
-            Toast.makeText(this, "Please add a phone number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please add a phone number that is 8 digits", Toast.LENGTH_SHORT).show();
             return;
         }
 
