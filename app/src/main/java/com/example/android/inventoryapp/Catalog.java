@@ -33,12 +33,6 @@ public class Catalog extends AppCompatActivity implements LoaderManager.LoaderCa
 
     TextView priceView;
 
-    int productPrice;
-
-    String productNameString;
-    String productSupplierNameString;
-    String productSupplierPhoneString;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
