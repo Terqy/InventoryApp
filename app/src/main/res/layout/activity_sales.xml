@@ -125,4 +125,22 @@
         android:layout_centerInParent="true"
         android:text="Call supplier" />
 
+    <Button
+        android:id="@+id/pluss_button_detailed_view"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/product_name_sales_category"
+        android:layout_marginEnd="151dp"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/minus_button_detailed_view"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/product_name_sales_category"
+        android:layout_marginStart="-151dp"
+        android:layout_toEndOf="@+id/pluss_button_detailed_view"
+        android:text="-" />
+
 </RelativeLayout>

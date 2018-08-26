@@ -27,9 +27,7 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
     private static final int EXISTING_LOADER = 0;
 
     private int productPrice;
-    private int finalPrice;
     private int itemQuantity;
-    private int orderQuantity;
     private int phoneNumber;
 
     private Boolean mItemHasChanged = false;
@@ -48,7 +46,7 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
     TextView productSupplierName;
     TextView productSupplierPhone;
 
-    Button callSupplier;
+    Button callSupplier, plussButton, minusButton;
 
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
         @Override
@@ -96,6 +94,31 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
             }
         });
 
+        plussButton = (Button) findViewById(R.id.pluss_button_detailed_view);
+        plussButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemQuantity += 1;
+                productQuantity.setText(String.valueOf(itemQuantity));
+            }
+        });
+
+        minusButton = (Button) findViewById(R.id.minus_button_detailed_view);
+        minusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemQuantity -= 1;
+                productQuantity.setText(String.valueOf(itemQuantity));
+            }
+        });
+    }
+
+    public void updateItemQuantity() {
+        ItemDbHelper dbHelper = new ItemDbHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(ItemContract.ItemEntry.COLUMN_QUANTITY, itemQuantity);
+        getContentResolver().update(ItemContract.ItemEntry.CONTENT_URI, values, null, null);
     }
 
     @Override
@@ -110,6 +133,10 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
             case R.id.sale_back_button:
                 Intent i = new Intent(SalesActivity.this, SalesList.class);
                 startActivity(i);
+                return true;
+
+            case R.id.save_quantity_button:
+                updateItemQuantity();
                 return true;
         }
         return super.onOptionsItemSelected(item);

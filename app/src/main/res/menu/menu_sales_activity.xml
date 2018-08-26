@@ -8,4 +8,11 @@
         android:icon="@android:drawable/ic_media_previous"
         app:showAsAction="always">
     </item>
+
+    <item
+        android:id="@+id/save_quantity_button"
+        android:title="Save"
+        android:icon="@android:drawable/ic_menu_save"
+        app:showAsAction="always">
+    </item>
 </menu>
