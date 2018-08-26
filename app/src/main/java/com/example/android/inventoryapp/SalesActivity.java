@@ -107,7 +107,9 @@ public class SalesActivity extends AppCompatActivity implements LoaderManager.Lo
         minusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                itemQuantity -= 1;
+                if(itemQuantity > 0) {
+                    itemQuantity -= 1;
+                }
                 productQuantity.setText(String.valueOf(itemQuantity));
             }
         });
